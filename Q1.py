@@ -1,44 +1,31 @@
 class ProductRecord:
-    def _init_(self, productId, name, category, price, quantity, supplier):
-        # Non-default constructor initializing all six attributes
-        self.product_id = productId
-        self.product_name = name
-        self.category = category
-        self.price = price
-        self.quantity_in_stock = quantity
-        self.supplier = supplier
+    def __init__(self, _product_id=0, _product_name="", _category="", _price=0.0, _quantity_in_stock=0, _supplier=""):
+        '''Attribute'''
+        product_id: int
+        product_name: str
+        category: str
+        price: float
+        quantity_in_stock: int
+        supplier: str
 
-    '''getter'''
-    def get_product_id(self):
-        return self.product_id
-    def get_product_name(self):
-        return self.product_name
-    def get_category(self):
-        return self.category
-    def get_price(self):
-        return self.price
-    def get_quantity_in_stock(self):
-        return self.quantity_in_stock
-    def get_supplier(self):
-        return self.supplier
+        '''Constructor'''
+        self.product_id = _product_id
+        self.product_name = _product_name
+        self.category = _category
+        self.price = _price
+        self.quantity_in_stock = _quantity_in_stock
+        self.supplier = _supplier
 
-    '''setter'''
-    def set_product_id(self, id):
-        self.product_id = id
-
-    def set_product_name(self, name):
-        self.product_name = name
-
-    def set_category(self, category):
-        self.category = category
-
-    def set_price(self, price):
-        self.price = price
-
-    def set_quantity_in_stock(self, stock):
-        self.quantity_in_stock = stock
-
-    def set_supplier(self, supplier):
-        self.supplier = supplier
+    def print(self):
+        ''' Display a formatted row of product information '''
+        print(f"{self.product_id:<10} {self.product_name:<20} {self.category:<15} ${self.price:>8.2f} "
+              f"{self.quantity_in_stock:>5} {self.supplier:<15}")
 
 
+# Example usage
+product1 = ProductRecord(1001, "Coconut Water", "Drink", 15.00, 25, "Woolworth")
+product1.print()
+
+# Changing values and printing again
+product1.quantity_in_stock = 20
+product1.print()
