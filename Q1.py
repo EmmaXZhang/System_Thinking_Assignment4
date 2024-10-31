@@ -16,8 +16,46 @@ class ProductRecord:
         self.quantity_in_stock = _quantity_in_stock
         self.supplier = _supplier
 
+    '''getter'''
+    def get_product_id(self):
+        return self.product_id
+
+    def get_product_name(self):
+        return self.product_name
+
+    def get_product_category(self):
+        return self.category
+
+    def get_price(self):
+        return self.price
+
+    def get_quantity_in_stock(self):
+        return self.quantity_in_stock
+
+    def get_supplier(self):
+        return self.supplier
+
+    '''setter'''
+    def set_product_id(self,_id):
+        self.product_id = _id
+
+    def set_product_name(self,_name):
+        self.product_name = _name
+
+    def set_product_category(self,_category):
+        self.category = _category
+
+    def set_price(self,_price):
+        self.price = _price
+
+    def set_quantity_in_stock(self,_quantity_in_stock):
+        self.quantity_in_stock = _quantity_in_stock
+
+    def set_supplier(self,_supplier):
+        self.supplier = _supplier
+
+    ''' Display a formatted row of product information '''
     def print(self):
-        ''' Display a formatted row of product information '''
         print(f"{self.product_id:<10} {self.product_name:<20} {self.category:<15} ${self.price:>8.2f} "
               f"{self.quantity_in_stock:>5} {self.supplier:<15}")
 
