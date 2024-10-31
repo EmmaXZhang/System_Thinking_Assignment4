@@ -1,5 +1,5 @@
 class ProductRecord:
-    def __init__(self, _product_id=0, _product_name="", _category="", _price=0.0, _quantity_in_stock=0, _supplier=""):
+    def __init__(self, _product_id, _product_name, _category, _price, _quantity_in_stock, _supplier):
         '''Attribute'''
         product_id: int
         product_name: str
@@ -23,7 +23,7 @@ class ProductRecord:
     def get_product_name(self):
         return self.product_name
 
-    def get_product_category(self):
+    def get_category(self):
         return self.category
 
     def get_price(self):
@@ -60,10 +60,13 @@ class ProductRecord:
               f"{self.quantity_in_stock:>5} {self.supplier:<15}")
 
 
-# Example usage
+''' Example usage'''
 product1 = ProductRecord(1001, "Coconut Water", "Drink", 15.00, 25, "Woolworth")
 product1.print()
 
-# Changing values and printing again
-product1.quantity_in_stock = 20
-product1.print()
+'''change price and printing again'''
+product1.set_price(5)
+print(product1.price)
+
+'''get values and printing again'''
+print(product1.get_category())
