@@ -169,7 +169,7 @@ class Menu:
                     print("Invalid option. Please select from 1 to 6.")
 
 
-'''Call Menu'''
+'''Call MenuApp menu function'''
 if __name__ == "__main__":
     menuApp = Menu()
     menuApp.menu()
