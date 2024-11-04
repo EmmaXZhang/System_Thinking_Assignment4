@@ -73,6 +73,7 @@ class ProductTable:
         print("Records loaded successfully from CSV file.")
 
     def display_products(self):
+
         """Display all product records."""
         print(f"{'Product_Id':>10} {'Product_Name':<45} {'Category':<10} {'Price':>10} {'Quantity_in_Stock':>19} {'Supplier':<13}")
         print("-" * 110)
@@ -105,7 +106,7 @@ class ProductTable:
             try:
                 productID = int(input("Enter product ID to delete: "))
                 for product in self.records:
-                    if product.product_id == productID:
+                    if product.get_product_id() == productID:
                         self.records.remove(product)
                         print("Product has been deleted.")
                         return
