@@ -1,21 +1,19 @@
-import csv
 class ProductRecord:
-    '''Attribute'''
-    product_id: int
-    product_name: str
-    category: str
-    price: float
-    quantity_in_stock: int
-    supplier: str
+    def __init__(self, product_id, product_name, category, price, quantity_in_stock, supplier):
+        '''Attribute'''
+        product_id: int
+        product_name: str
+        category: str
+        price: float
+        quantity_in_stock: int
+        supplier: str
 
-    '''Constructors'''
-    def __init__(self, productId, name, category, price, quantity, supplier):
-        # Non-default constructor initializing all six attributes
-        self.product_id = productId
-        self.product_name = name
+        '''Constructor'''
+        self.product_id = product_id
+        self.product_name = product_name
         self.category = category
         self.price = price
-        self.quantity_in_stock = quantity
+        self.quantity_in_stock = quantity_in_stock
         self.supplier = supplier
 
     '''getter'''
@@ -61,36 +59,43 @@ class ProductRecord:
 
 class ProductTable:
     def __init__(self):
-        # array of product records
         self.records = []
 
-    def add_record(self,record):
+    '''Add Record'''
+    def add_record(self, record):
         if isinstance(record, ProductRecord):
             self.records.append(record)
 
+    '''Display all records'''
     def display_all_record(self):
-        print(
-            f"{'Product_Id':>10} {'Product_Name':<45} {'Category':<10} {'Price':>10} {'Quantity_in_Stock':>19} {'Supplier':<13}")
-        for record in self.records:
-            print(
-                f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
-                f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
+        if not self.records:
+            print("The table is empty.")
+        else:
+            print(f"{'Product ID':>10}  {'Product Name':<40}  {'Category':<10}  {'Price':>10}  {'Quantity':>10}  {'Supplier':>10}")
+            print("-" * 110)
+            for record in self.records:
+                print(
+                    f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
+                    f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
 
-    def display_record_by_id(self,id):
+    '''Display record by ID'''
+    def display_record_by_id(self, _id):
         for record in self.records:
-            if record.get_product_id() == id:
+            if record.get_product_id() == _id:
                 print(
                     f"The product detail you found is:\nProduct Id:{record.get_product_id()}\nProduct Name:{record.get_product_name()}\nCategory:{record.get_category()}\n"
                     f"Price:{record.get_price()}\nQuantity in Stock:{record.get_quantity_in_stock()}\nSupplier:{record.get_supplier()}")
         return "Not found"
 
 
-'''add records to table'''
+'''Adding records from provided data'''
 record1 = ProductRecord(1001, "Original Crackers Biscuits", "Biscuit", 3.2, 2350, "Arnott")
 record2 = ProductRecord(1002, "Original Cookies", "Biscuit", 4.23, 1253, "Oreo")
 record3 = ProductRecord(1003, "Milk Chocolate 18 Mini Bars Share Pack", "Chocolate", 6.5, 5784, "Kitkat")
 record4 = ProductRecord(1004, "Dairy Milk Chocolate Bar", "Chocolate", 2.5, 1736, "Cadbury")
 record5 = ProductRecord(1005, "Chocolate Bar With Nougat & Caramel", "Chocolate", 1.1, 679, "Mars")
+
+'''Create product table object and add records to table'''
 table = ProductTable()
 table.add_record(record1)
 table.add_record(record2)
@@ -98,9 +103,9 @@ table.add_record(record3)
 table.add_record(record4)
 table.add_record(record5)
 
-'''display record in table format'''
+
+'''Displaying all record in table format'''
 table.display_all_record()
 
-'''display record by finding product ID'''
+'''Display record by finding product ID'''
 table.display_record_by_id(1002)
-
