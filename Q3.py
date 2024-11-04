@@ -1,7 +1,4 @@
 import csv
-
-
-'''Represents a single product record with attributes'''
 class ProductRecord:
     '''Attribute'''
     product_id: int
@@ -50,12 +47,10 @@ class ProductRecord:
         self.supplier = _supplier
 
 
-'''Manages a collection of ProductRecord instances'''
 class ProductTable:
     def __init__(self):
-        # Initialize an empty list to store product records
+        # array of product records
         self.records = []
-
     def load_data_from_csv(self, csv_file):
         """Load data from CSV file and store it in ProductRecord instances."""
         # Clear existing records
@@ -77,12 +72,9 @@ class ProductTable:
                 self.records.append(record)
         print("Records loaded successfully from CSV file.")
 
-
-
     def display_products(self):
-        '''Display all product records in a formatted table'''
-        print(
-            f"{'Product ID':>10}  {'Product Name':<40}  {'Category':<10}  {'Price':>10}  {'Quantity':>10}  {'Supplier':>10}")
+        """Display all product records."""
+        print(f"{'Product_Id':>10} {'Product_Name':<45} {'Category':<10} {'Price':>10} {'Quantity_in_Stock':>19} {'Supplier':<13}")
         print("-" * 110)
         for record in self.records:
             print(
@@ -139,8 +131,6 @@ class ProductTable:
         print("Records saved successfully to csv file.")
 
 file = "product_data.csv"
-
-'''Provides an interactive menu for the user to interact with the ProductTable'''
 class Menu:
     def __init__(self):
         self.product_table = ProductTable()
@@ -167,7 +157,6 @@ class Menu:
                     print("Invalid option. Please select from 1 to 6.")
 
 
-'''Example usage of the menu'''
 if __name__ == "__main__":
     menuApp = Menu()
     menuApp.menu()
