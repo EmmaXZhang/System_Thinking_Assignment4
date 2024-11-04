@@ -100,7 +100,7 @@ class ProductTable:
 
         print("Product added successfully.")
 
-'''delete product data'''
+    '''delete product data'''
     def delete_product(self):
         if not self.records:
             print("No products available to delete.")
@@ -141,31 +141,7 @@ def save_data(self, csv_file):
 file = "product_data.csv"
 
 
-class Menu:
-    def __init__(self):
-        self.product_table = ProductTable()
 
-    '''Menu Function'''
-    def menu(self):
-        while True:
-            user_choice = int(input(
-                "\nChoose menu option: \n 1.Load records \n 2.Display \n 3.Add record \n 4.Delete record "
-                "\n 5.Save records \n 6.Exit \n Select: "))
-            match user_choice:
-                case 1:
-                    self.product_table.load_data_from_csv(file)
-                case 2:
-                    self.product_table.display_products()
-                case 3:
-                    self.product_table.add_product()
-                case 4:
-                    self.product_table.delete_product()
-                case 5:
-                    self.product_table.save_data(file)
-                case 6:
-                    break
-                case _:
-                    print("Invalid option. Please select from 1 to 6.")
 
 
 '''Call Menu'''
