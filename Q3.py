@@ -100,6 +100,22 @@ class ProductTable:
 
         print("Product added successfully.")
 
+'''delete product data'''
+    def delete_product(self):
+        if not self.records:
+            print("No products available to delete.")
+        while True:
+            try:
+                productID = int(input("Enter product ID to delete: "))
+                for product in self.records:
+                    if product.product_id == productID:
+                        self.records.remove(product)
+                        print("Product has been deleted.")
+                        return
+                print("Product ID not found.")
+            except ValueError:
+                print("Invalid input.Please enter again.")
+
 
 
 '''Define csv file path'''
