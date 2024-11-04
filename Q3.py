@@ -49,18 +49,19 @@ class ProductRecord:
 
 class ProductTable:
     def __init__(self):
-        # array of product records
+        '''array of product records'''
         self.records = []
+
+    '''Load data from CSV file and store it in ProductRecord instances.'''
     def load_data_from_csv(self, csv_file):
-        """Load data from CSV file and store it in ProductRecord instances."""
-        # Clear existing records
+        '''Clear existing records'''
         self.records.clear()
         with open(csv_file, mode='r') as product_inventory:
             product_data = csv.reader(product_inventory)
-            # Skip header row
+            '''Skip header row'''
             next(product_data)
             for row in product_data:
-                # Create a new ProductRecord instance and append it to the records list
+                '''Create a new ProductRecord instance and append it to the records list'''
                 record = ProductRecord(
                     int(row[0]),
                     row[1],
@@ -82,6 +83,7 @@ class ProductTable:
                 f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
         print("Data loaded successfully.")
 
+    '''Add product data'''
     def add_product(self):
         if self.records:
             new_id = self.records[-1].get_product_id() + 1
@@ -98,6 +100,7 @@ class ProductTable:
 
         print("Product added successfully.")
 
+    '''delete product data'''
     def delete_product(self):
         if not self.records:
             print("No products available to delete.")
@@ -113,12 +116,13 @@ class ProductTable:
             except ValueError:
                 print("Invalid input.Please enter again.")
 
+    '''Save data'''
     def save_data(self,csv_file):
         with open(csv_file, mode="w",newline="") as product_inventory:
             writer = csv.writer(product_inventory)
-            # write header
+            '''write header'''
             writer.writerow(["Product ID", "Product Name", "Category", "Price", "Quantity in Stock", "Supplier"])
-            # write data
+            '''write data'''
             for record in self.records:
                 writer.writerow([
                     record.get_product_id(),
@@ -130,11 +134,16 @@ class ProductTable:
                 ])
         print("Records saved successfully to csv file.")
 
+
+'''Define csv file path'''
 file = "product_data.csv"
+
+
 class Menu:
     def __init__(self):
         self.product_table = ProductTable()
 
+    '''Menu Function'''
     def menu(self):
         while True:
             user_choice = int(input(
@@ -157,6 +166,7 @@ class Menu:
                     print("Invalid option. Please select from 1 to 6.")
 
 
+'''Call Menu'''
 if __name__ == "__main__":
     menuApp = Menu()
     menuApp.menu()
