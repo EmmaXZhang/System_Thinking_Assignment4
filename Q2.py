@@ -78,14 +78,7 @@ class ProductTable:
                     f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
                     f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
 
-    '''Display record by ID'''
-    def display_record_by_id(self, _id):
-        for record in self.records:
-            if record.get_product_id() == _id:
-                print(
-                    f"The product detail you found is:\nProduct Id:{record.get_product_id()}\nProduct Name:{record.get_product_name()}\nCategory:{record.get_category()}\n"
-                    f"Price:{record.get_price()}\nQuantity in Stock:{record.get_quantity_in_stock()}\nSupplier:{record.get_supplier()}")
-        return "Not found"
+
 
 
 '''Adding records from provided data'''
