@@ -100,39 +100,6 @@ class ProductTable:
 
         print("Product added successfully.")
 
-    '''delete product data'''
-    def delete_product(self):
-        if not self.records:
-            print("No products available to delete.")
-        while True:
-            try:
-                productID = int(input("Enter product ID to delete: "))
-                for product in self.records:
-                    if product.product_id == productID:
-                        self.records.remove(product)
-                        print("Product has been deleted.")
-                        return
-                print("Product ID not found.")
-            except ValueError:
-                print("Invalid input.Please enter again.")
-
-    '''Save data'''
-    def save_data(self,csv_file):
-        with open(csv_file, mode="w",newline="") as product_inventory:
-            writer = csv.writer(product_inventory)
-            '''write header'''
-            writer.writerow(["Product ID", "Product Name", "Category", "Price", "Quantity in Stock", "Supplier"])
-            '''write data'''
-            for record in self.records:
-                writer.writerow([
-                    record.get_product_id(),
-                    record.get_product_name(),
-                    record.get_category(),
-                    record.get_price(),
-                    record.get_quantity_in_stock(),
-                    record.get_supplier()
-                ])
-        print("Records saved successfully to csv file.")
 
 
 '''Define csv file path'''
