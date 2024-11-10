@@ -1,16 +1,26 @@
 import csv
+
+'''ProductRecord Class 
+   Represents a single product with various attributes: ID, name, category, price, quantity, and supplier.
+'''
 class ProductRecord:
-    '''Attribute'''
+    '''Attributes for storing product details.'''
+    '''Unique identifier for the product'''
     product_id: int
+    '''Name of the product'''
     product_name: str
+    '''Category the product belongs to'''
     category: str
+    '''Price of the product'''
     price: float
+    '''Quantity of the product available in stock'''
     quantity_in_stock: int
+    '''Supplier of the product'''
     supplier: str
 
-    '''Constructor'''
+    '''Constructor to initialize all six attributes of a product.'''
     def __init__(self, productId, name, category, price, quantity, supplier):
-        # Non-default constructor initializing all six attributes
+        '''Initializes a new product with specified ID, name, category, price, quantity, and supplier'''
         self.product_id = productId
         self.product_name = name
         self.category = category
@@ -18,7 +28,7 @@ class ProductRecord:
         self.quantity_in_stock = quantity
         self.supplier = supplier
 
-    '''getter'''
+    '''Getters for retrieving individual product attributes.'''
     def get_product_id(self):
         return self.product_id
     def get_product_name(self):
@@ -32,7 +42,7 @@ class ProductRecord:
     def get_supplier(self):
         return self.supplier
 
-    '''setter'''
+    '''Setters for modifying individual product attributes.'''
     def set_product_id(self, _id):
         self.product_id = _id
     def set_product_name(self, _name):
@@ -47,14 +57,17 @@ class ProductRecord:
         self.supplier = _supplier
 
 
+'''ProductTable Class
+   Manages a collection of ProductRecord objects, enabling loading, displaying, adding, deleting, and saving products.
+'''
 class ProductTable:
     def __init__(self):
-        '''array of product records'''
+        '''Array to store multiple ProductRecord instances representing individual products.'''
         self.records = []
 
-    '''Load data from CSV file and store it in ProductRecord instances.'''
+    '''Loads product data from a CSV file and stores it in ProductRecord instances.'''
     def load_data_from_csv(self, csv_file):
-        '''Clear existing records'''
+        '''Clears existing records before loading new data from the CSV file.'''
         self.records.clear()
         with open(csv_file, mode='r') as product_inventory:
             product_data = csv.reader(product_inventory)
@@ -73,19 +86,19 @@ class ProductTable:
                 self.records.append(record)
         print("Records loaded successfully from CSV file.")
 
+    '''Displays all product records in a tabular format.'''
     def display_products(self):
-
         """Display all product records."""
         print(f"{'Product_Id':>10} {'Product_Name':<45} {'Category':<10} {'Price':>10} {'Quantity_in_Stock':>19} {'Supplier':<13}")
         print("-" * 110)
         for record in self.records:
-            print(
-                f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
+            print(f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
                 f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
         print("Data loaded successfully.")
 
-    '''Add product data'''
+    '''Adds a new product to the records with user input for each attribute.'''
     def add_product(self):
+        '''Assigns a unique ID to the new product based on the last product ID in records'''
         if self.records:
             new_id = self.records[-1].get_product_id() + 1
         else:
@@ -101,8 +114,9 @@ class ProductTable:
 
         print("Product added successfully.")
 
-    '''delete product data'''
+    '''Deletes a product from the records based on the product ID provided by the user.'''
     def delete_product(self):
+        '''Checks if records are available for deletion'''
         if not self.records:
             print("No products available to delete.")
         while True:
@@ -117,36 +131,36 @@ class ProductTable:
             except ValueError:
                 print("Invalid input.Please enter again.")
 
+    '''Save data'''
+    def save_data(self, csv_file):
+        with open(csv_file, mode="w", newline="") as product_inventory:
+            writer = csv.writer(product_inventory)
+            '''write header'''
+            writer.writerow(["Product ID", "Product Name", "Category", "Price", "Quantity in Stock", "Supplier"])
+            '''write data'''
+            for record in self.records:
+                writer.writerow([
+                    record.get_product_id(),
+                    record.get_product_name(),
+                    record.get_category(),
+                    record.get_price(),
+                    record.get_quantity_in_stock(),
+                    record.get_supplier()
+                ])
+        print("Records saved successfully to csv file.")
 
-'''Save data'''
-
-
-def save_data(self, csv_file):
-    with open(csv_file, mode="w", newline="") as product_inventory:
-        writer = csv.writer(product_inventory)
-        '''write header'''
-        writer.writerow(["Product ID", "Product Name", "Category", "Price", "Quantity in Stock", "Supplier"])
-        '''write data'''
-        for record in self.records:
-            writer.writerow([
-                record.get_product_id(),
-                record.get_product_name(),
-                record.get_category(),
-                record.get_price(),
-                record.get_quantity_in_stock(),
-                record.get_supplier()
-            ])
-    print("Records saved successfully to csv file.")
-
-'''Define csv file path'''
+'''Defines the CSV file path for loading and saving product data.'''
 file = "product_data.csv"
 
-
+'''Menu Class
+   Provides a menu-driven interface for interacting with the ProductTable, allowing the user to perform CRUD operations.
+'''
 class Menu:
     def __init__(self):
+        '''Initializes a ProductTable instance for managing product records.'''
         self.product_table = ProductTable()
 
-    '''Menu Function'''
+    '''Displays the menu and handles user selections to perform different operations.'''
     def menu(self):
         while True:
             user_choice = int(input(
@@ -169,7 +183,7 @@ class Menu:
                     print("Invalid option. Please select from 1 to 6.")
 
 
-'''Call MenuApp menu function'''
+'''Runs the application by calling the menu function if the script is executed directly.'''
 if __name__ == "__main__":
     menuApp = Menu()
     menuApp.menu()
