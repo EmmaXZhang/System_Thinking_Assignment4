@@ -70,13 +70,13 @@ class ProductRecord:
               f"{self.quantity_in_stock:>5} {self.supplier:<15}")
 
 
-''' Example usage'''
+''' Example usage with non-default constructor'''
 product1 = ProductRecord(1001, "Coconut Water", "Drink", 15.00, 25, "Woolworth")
 product1.print()
 
-'''change price and printing again'''
+'''change price and printing again by using setter: set_price()'''
 product1.set_price(5)
 print(product1.price)
 
-'''get values and printing again'''
+'''get values and printing again by using getter: get_category()'''
 print(product1.get_category())
