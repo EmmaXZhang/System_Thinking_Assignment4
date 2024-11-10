@@ -1,14 +1,21 @@
 class ProductRecord:
-    def __init__(self, _product_id, _product_name, _category, _price, _quantity_in_stock, _supplier):
-        '''Attribute'''
-        product_id: int
-        product_name: str
-        category: str
-        price: float
-        quantity_in_stock: int
-        supplier: str
+    '''Attributes for storing product details.'''
+    '''Unique identifier for the product'''
+    product_id: int
+    '''Name of the product'''
+    product_name: str
+    '''Category the product belongs to'''
+    category: str
+    '''Price of the product'''
+    price: float
+    '''Quantity of the product available in stock'''
+    quantity_in_stock: int
+    '''Supplier of the product'''
+    supplier: str
 
-        '''Constructor'''
+    '''Constructor to initialize all six attributes of a product.'''
+    def __init__(self, _product_id, _product_name, _category, _price, _quantity_in_stock, _supplier):
+        '''Initializes a new product with specified ID, name, category, price, quantity, and supplier'''
         self.product_id = _product_id
         self.product_name = _product_name
         self.category = _category
@@ -16,7 +23,7 @@ class ProductRecord:
         self.quantity_in_stock = _quantity_in_stock
         self.supplier = _supplier
 
-    '''getter'''
+    '''Getters for retrieving individual product attributes.'''
     def get_product_id(self):
         return self.product_id
 
@@ -35,7 +42,7 @@ class ProductRecord:
     def get_supplier(self):
         return self.supplier
 
-    '''setter'''
+    '''Setters for modifying individual product attributes.'''
     def set_product_id(self,_id):
         self.product_id = _id
 
