@@ -1,3 +1,6 @@
+'''ProductRecord Class
+   Represents a single product with various attributes: ID, name, category, price, quantity, and supplier.
+'''
 class ProductRecord:
     '''Attributes for storing product details.'''
     '''Unique identifier for the product'''
