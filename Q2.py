@@ -1,14 +1,25 @@
+'''ProductRecord Class
+   Represents a single product with various attributes: ID, name, category, price, quantity, and supplier.
+'''
 class ProductRecord:
+    '''Constructor to initialize all six attributes of a product.'''
     def __init__(self, product_id, product_name, category, price, quantity_in_stock, supplier):
-        '''Attribute'''
+        '''Attributes for storing product details.'''
+        '''Unique identifier for the product'''
         product_id: int
+        '''Name of the product'''
         product_name: str
+        '''Category the product belongs to'''
         category: str
+        '''Price of the product'''
         price: float
+        '''Quantity of the product available in stock'''
         quantity_in_stock: int
+        '''Supplier of the product'''
         supplier: str
 
-        '''Constructor'''
+
+        '''Initializes a new product with specified ID, name, category, price, quantity, and supplier'''
         self.product_id = product_id
         self.product_name = product_name
         self.category = category
@@ -16,8 +27,7 @@ class ProductRecord:
         self.quantity_in_stock = quantity_in_stock
         self.supplier = supplier
 
-    '''getter'''
-
+    '''Getters for retrieving individual product attributes.'''
     def get_product_id(self):
         return self.product_id
 
@@ -36,8 +46,7 @@ class ProductRecord:
     def get_supplier(self):
         return self.supplier
 
-    '''setter'''
-
+    '''Setters for modifying individual product attributes.'''
     def set_product_id(self, _id):
         self.product_id = _id
 
@@ -56,21 +65,25 @@ class ProductRecord:
     def set_supplier(self, _supplier):
         self.supplier = _supplier
 
-
+'''ProductTable Class
+   Manages a collection of ProductRecord objects, enabling loading, displaying, adding, deleting, and saving products.
+'''
 class ProductTable:
     def __init__(self):
+        '''Array to store multiple ProductRecord instances representing individual products.'''
         self.records = []
 
-    '''Add Record'''
+    '''Adds records to record array'''
     def add_record(self, record):
         if isinstance(record, ProductRecord):
             self.records.append(record)
 
-    '''Display all records'''
+    '''Display all records in a tabular format.'''
     def display_all_record(self):
         if not self.records:
             print("The table is empty.")
         else:
+            """Display all product records."""
             print(f"{'Product ID':>10}  {'Product Name':<40}  {'Category':<10}  {'Price':>10}  {'Quantity':>10}  {'Supplier':>10}")
             print("-" * 110)
             for record in self.records:
