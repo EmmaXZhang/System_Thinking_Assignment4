@@ -2,23 +2,22 @@
    Represents a single product with various attributes: ID, name, category, price, quantity, and supplier.
 '''
 class ProductRecord:
+    '''Attributes for storing product details.'''
+    '''Unique identifier for the product'''
+    product_id: int
+    '''Name of the product'''
+    product_name: str
+    '''Category the product belongs to'''
+    category: str
+    '''Price of the product'''
+    price: float
+    '''Quantity of the product available in stock'''
+    quantity_in_stock: int
+    '''Supplier of the product'''
+    supplier: str
+
     '''Constructor to initialize all six attributes of a product.'''
     def __init__(self, product_id, product_name, category, price, quantity_in_stock, supplier):
-        '''Attributes for storing product details.'''
-        '''Unique identifier for the product'''
-        product_id: int
-        '''Name of the product'''
-        product_name: str
-        '''Category the product belongs to'''
-        category: str
-        '''Price of the product'''
-        price: float
-        '''Quantity of the product available in stock'''
-        quantity_in_stock: int
-        '''Supplier of the product'''
-        supplier: str
-
-
         '''Initializes a new product with specified ID, name, category, price, quantity, and supplier'''
         self.product_id = product_id
         self.product_name = product_name
@@ -66,14 +65,14 @@ class ProductRecord:
         self.supplier = _supplier
 
 '''ProductTable Class
-   Manages a collection of ProductRecord objects, enabling loading, displaying, adding, deleting, and saving products.
+   Manages a collection of ProductRecord objects, enabling adding, display all records, display individual record.
 '''
 class ProductTable:
     def __init__(self):
         '''Array to store multiple ProductRecord instances representing individual products.'''
         self.records = []
 
-    '''Adds records to record array'''
+    '''Adds ProductRecord instances to records array'''
     def add_record(self, record):
         if isinstance(record, ProductRecord):
             self.records.append(record)
@@ -91,7 +90,7 @@ class ProductTable:
                     f"{record.get_product_id():>10} {record.get_product_name():<45} {record.get_category():<10} "
                     f"{record.get_price():>10.2f} {record.get_quantity_in_stock():>19} {record.get_supplier():<13}")
 
-    '''Display record by ID'''
+    '''Display record by specific ID'''
     def display_record_by_id(self, _id):
         for record in self.records:
             if record.get_product_id() == _id:
