@@ -4,7 +4,7 @@ import csv
    Represents a single product with various attributes: ID, name, category, price, quantity, and supplier.
 '''
 class ProductRecord:
-    '''Attributes for storing product details.'''
+    '''Attributes for storing product details'''
     '''Unique identifier for the product'''
     product_id: int
     '''Name of the product'''
