@@ -95,20 +95,22 @@ class ProductTable:
         for record in self.records:
             if record.get_product_id() == _id:
                 print(
-                    f"The product detail you found is:\nProduct Id:{record.get_product_id()}\nProduct Name:{record.get_product_name()}\nCategory:{record.get_category()}\n"
+                    f"\nThe product detail you found is:\nProduct Id:{record.get_product_id()}\nProduct Name:{record.get_product_name()}\nCategory:{record.get_category()}\n"
                     f"Price:{record.get_price()}\nQuantity in Stock:{record.get_quantity_in_stock()}\nSupplier:{record.get_supplier()}")
         return "Not found"
 
 
-'''Adding records from provided data'''
+'''Create ProductRecord objects from provided data'''
 record1 = ProductRecord(1001, "Original Crackers Biscuits", "Biscuit", 3.2, 2350, "Arnott")
 record2 = ProductRecord(1002, "Original Cookies", "Biscuit", 4.23, 1253, "Oreo")
 record3 = ProductRecord(1003, "Milk Chocolate 18 Mini Bars Share Pack", "Chocolate", 6.5, 5784, "Kitkat")
 record4 = ProductRecord(1004, "Dairy Milk Chocolate Bar", "Chocolate", 2.5, 1736, "Cadbury")
 record5 = ProductRecord(1005, "Chocolate Bar With Nougat & Caramel", "Chocolate", 1.1, 679, "Mars")
 
-'''Create product table object and add records to table'''
+'''Create product table object'''
 table = ProductTable()
+
+'''Add records to table using add_record() function'''
 table.add_record(record1)
 table.add_record(record2)
 table.add_record(record3)
